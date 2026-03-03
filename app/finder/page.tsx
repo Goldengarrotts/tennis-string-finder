@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import FinderWizard from '@/components/FinderWizard';
+import { detectRegion } from '@/lib/detectRegion';
 
 export const metadata: Metadata = {
   title: 'String Finder — Find Your Perfect Tennis String',
@@ -7,7 +8,9 @@ export const metadata: Metadata = {
     'Answer 4 quick questions about your racquet, playing goals, and arm health. Get 3 personalised string recommendations with plain-English reasons.',
 };
 
-export default function FinderPage() {
+export default async function FinderPage() {
+  const defaultRegion = await detectRegion();
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="max-w-2xl mx-auto mb-10 text-center">
@@ -17,7 +20,7 @@ export default function FinderPage() {
           Takes about 60 seconds. No account needed. We&apos;ll explain exactly why we recommend each string.
         </p>
       </div>
-      <FinderWizard />
+      <FinderWizard defaultRegion={defaultRegion} />
     </div>
   );
 }

@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { strings, getStringBySlug } from '@/data/strings';
+import { racquets } from '@/data/racquets';
 import RatingBar from '@/components/RatingBar';
+import WhereToBuy from '@/components/WhereToBuy';
+import { detectRegion } from '@/lib/detectRegion';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -40,9 +43,14 @@ export default async function StringDetailPage({ params }: Props) {
   const s = getStringBySlug(slug);
   if (!s) notFound();
 
+  const defaultRegion = await detectRegion();
+
   const pairings = getPairings(s.type);
   const similar = strings
     .filter((x) => x.slug !== s.slug && x.type === s.type)
+    .slice(0, 3);
+  const worksIn = racquets
+    .filter((r) => r.recommendedStrings?.includes(s.slug))
     .slice(0, 3);
 
   return (
@@ -82,6 +90,9 @@ export default async function StringDetailPage({ params }: Props) {
               <RatingBar label="Durability" value={s.ratings.durability} />
             </div>
           </div>
+
+          {/* Where to buy */}
+          <WhereToBuy itemType="string" itemSlug={s.slug} itemName={`${s.brand} ${s.name}`} defaultRegion={defaultRegion} />
 
           {/* Why this pick */}
           <div className="bg-court/5 border border-court/20 rounded-xl p-6">
@@ -180,6 +191,28 @@ export default async function StringDetailPage({ params }: Props) {
               🎾 Find strings for my racquet
             </Link>
           </div>
+
+          {/* Works great in */}
+          {worksIn.length > 0 && (
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h3 className="font-bold text-gray-900 mb-3 text-sm">Works great in</h3>
+              <div className="space-y-2">
+                {worksIn.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/racquets/${r.slug}`}
+                    className="flex items-center justify-between p-2.5 rounded-lg bg-gray-50 hover:bg-court/5 border border-transparent hover:border-court/20 transition-colors"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-xs text-gray-400">{r.brand}</p>
+                      <p className="text-sm font-medium text-gray-900 truncate">{r.name}</p>
+                    </div>
+                    <span className="text-xs text-court font-semibold ml-2 shrink-0">View →</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Affiliate notice */}
           <p className="text-xs text-gray-400 leading-relaxed">

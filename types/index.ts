@@ -42,6 +42,7 @@ export interface Racquet {
   stringPattern: string;
   tensionMin: number;
   tensionMax: number;
+  stiffnessRA?: number;
   level: Level;
   description: string;
   recommendedStrings?: string[];

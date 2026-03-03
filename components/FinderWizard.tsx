@@ -6,6 +6,8 @@ import { racquets } from '@/data/racquets';
 import { recommend } from '@/lib/recommend';
 import type { Goal, FinderParams, Recommendation } from '@/types';
 import RatingBar from './RatingBar';
+import WhereToBuy from './WhereToBuy';
+import type { Region } from '@/data/retailLinks';
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
@@ -55,7 +57,7 @@ function StepIndicator({ current, total }: { current: Step; total: number }) {
   );
 }
 
-export default function FinderWizard() {
+export default function FinderWizard({ defaultRegion }: { defaultRegion?: Region }) {
   const [step, setStep] = useState<Step>(1);
   const [racquetQuery, setRacquetQuery] = useState('');
   const [selectedRacquet, setSelectedRacquet] = useState<string>('');
@@ -331,7 +333,7 @@ export default function FinderWizard() {
 
           <div className="space-y-5">
             {results.map((rec, i) => (
-              <ResultCard key={rec.string.slug} rec={rec} rank={i + 1} racquet={selectedRacquetObj} />
+              <ResultCard key={rec.string.slug} rec={rec} rank={i + 1} racquet={selectedRacquetObj} defaultRegion={defaultRegion} />
             ))}
           </div>
 
@@ -361,10 +363,12 @@ function ResultCard({
   rec,
   rank,
   racquet,
+  defaultRegion,
 }: {
   rec: Recommendation;
   rank: number;
   racquet: ReturnType<typeof racquets.find>;
+  defaultRegion?: Region;
 }) {
   const s = rec.string;
   const rankColors = ['bg-ball text-court', 'bg-gray-200 text-gray-700', 'bg-gray-100 text-gray-600'];
@@ -448,6 +452,8 @@ function ResultCard({
             Compare
           </Link>
         </div>
+
+        <WhereToBuy itemType="string" itemSlug={s.slug} itemName={`${s.brand} ${s.name}`} compact defaultRegion={defaultRegion} />
       </div>
     </div>
   );

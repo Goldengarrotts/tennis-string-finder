@@ -1,0 +1,93 @@
+# Retail / affiliate links
+# retailer: amazon | tennisWarehouse | tennisPoint | other
+# region:   US | UK | EU | GLOBAL
+# url:      Leave EMPTY for amazon — WhereToBuy auto-generates a search URL from the item name.
+#           Fill in an ASIN URL (e.g. https://amazon.com/dp/BXXXXXXX?tag=...) when you have one.
+#           Required for all other retailers.
+# isPrimary: true = shown by default; false = shown after "Show more retailers"
+# price: numeric (e.g. 12.99) or blank for unknown
+# currency: USD | GBP | EUR — required when price is set
+# lastCheckedISO: ISO date string when price was last manually checked (e.g. 2025-03-01)
+itemType,itemSlug,retailer,region,url,isPrimary,price,currency,lastCheckedISO
+# ── Luxilon ALU Power ─────────────────────────────────────────────────────────
+string,luxilon-alu-power,amazon,US,,true,,,
+string,luxilon-alu-power,tennisWarehouse,US,https://www.tenniswarehouse.com/p/LUXILON_ALU_POWER.html?src=AFFILIATE_TAG,true,,,
+string,luxilon-alu-power,amazon,UK,,true,,,
+string,luxilon-alu-power,tennisPoint,EU,https://www.tennis-point.com/luxilon-alu-power?ref=AFFILIATE_TAG,true,,,
+string,luxilon-alu-power,amazon,EU,,false,,,
+# ── Babolat RPM Blast ─────────────────────────────────────────────────────────
+string,babolat-rpm-blast,amazon,US,,true,,,
+string,babolat-rpm-blast,tennisWarehouse,US,https://www.tenniswarehouse.com/p/BABOLAT_RPM_BLAST.html?src=AFFILIATE_TAG,true,,,
+string,babolat-rpm-blast,amazon,UK,,true,,,
+string,babolat-rpm-blast,tennisPoint,EU,https://www.tennis-point.com/babolat-rpm-blast?ref=AFFILIATE_TAG,true,,,
+# ── Solinco Tour Bite ─────────────────────────────────────────────────────────
+string,solinco-tour-bite,amazon,US,,true,,,
+string,solinco-tour-bite,tennisWarehouse,US,https://www.tenniswarehouse.com/p/SOLINCO_TOUR_BITE.html?src=AFFILIATE_TAG,true,,,
+string,solinco-tour-bite,amazon,UK,,false,,,
+# ── Solinco Hyper-G ───────────────────────────────────────────────────────────
+string,solinco-hyper-g,amazon,US,,true,,,
+string,solinco-hyper-g,tennisWarehouse,US,https://www.tenniswarehouse.com/p/SOLINCO_HYPER_G.html?src=AFFILIATE_TAG,true,,,
+# ── Head Hawk ─────────────────────────────────────────────────────────────────
+string,head-hawk,amazon,US,,true,,,
+string,head-hawk,tennisWarehouse,US,https://www.tenniswarehouse.com/p/HEAD_HAWK.html?src=AFFILIATE_TAG,true,,,
+string,head-hawk,tennisPoint,EU,https://www.tennis-point.com/head-hawk?ref=AFFILIATE_TAG,true,,,
+string,head-hawk,amazon,UK,,true,,,
+# ── Tecnifibre Black Code ─────────────────────────────────────────────────────
+string,tecnifibre-black-code,amazon,US,,true,,,
+string,tecnifibre-black-code,tennisWarehouse,US,https://www.tenniswarehouse.com/p/TECNIFIBRE_BLACK_CODE.html?src=AFFILIATE_TAG,true,,,
+string,tecnifibre-black-code,tennisPoint,EU,https://www.tennis-point.com/tecnifibre-black-code?ref=AFFILIATE_TAG,true,,,
+# ── Wilson NXT ────────────────────────────────────────────────────────────────
+string,wilson-nxt,amazon,US,,true,,,
+string,wilson-nxt,tennisWarehouse,US,https://www.tenniswarehouse.com/p/WILSON_NXT.html?src=AFFILIATE_TAG,true,,,
+string,wilson-nxt,amazon,UK,,true,,,
+string,wilson-nxt,tennisPoint,EU,https://www.tennis-point.com/wilson-nxt?ref=AFFILIATE_TAG,false,,,
+# ── Tecnifibre X-One Biphase ──────────────────────────────────────────────────
+string,tecnifibre-x-one-biphase,amazon,US,,true,,,
+string,tecnifibre-x-one-biphase,tennisWarehouse,US,https://www.tenniswarehouse.com/p/TECNIFIBRE_X1_BIPHASE.html?src=AFFILIATE_TAG,true,,,
+string,tecnifibre-x-one-biphase,tennisPoint,EU,https://www.tennis-point.com/tecnifibre-x-one-biphase?ref=AFFILIATE_TAG,true,,,
+# ── Babolat VS Team ───────────────────────────────────────────────────────────
+string,babolat-vs-team,amazon,US,,true,,,
+string,babolat-vs-team,tennisWarehouse,US,https://www.tenniswarehouse.com/p/BABOLAT_VS_TEAM.html?src=AFFILIATE_TAG,true,,,
+string,babolat-vs-team,tennisPoint,EU,https://www.tennis-point.com/babolat-vs-team?ref=AFFILIATE_TAG,true,,,
+# ── Wilson Natural Gut ────────────────────────────────────────────────────────
+string,wilson-natural-gut,amazon,US,,true,,,
+string,wilson-natural-gut,tennisWarehouse,US,https://www.tenniswarehouse.com/p/WILSON_NATURAL_GUT.html?src=AFFILIATE_TAG,true,,,
+# ── Prince Synthetic Gut ──────────────────────────────────────────────────────
+string,prince-synthetic-gut,amazon,US,,true,,,
+string,prince-synthetic-gut,amazon,UK,,true,,,
+# ── Yonex Poly Tour Pro ───────────────────────────────────────────────────────
+string,yonex-poly-tour-pro,amazon,US,,true,,,
+string,yonex-poly-tour-pro,tennisWarehouse,US,https://www.tenniswarehouse.com/p/YONEX_POLY_TOUR_PRO.html?src=AFFILIATE_TAG,true,,,
+string,yonex-poly-tour-pro,tennisPoint,EU,https://www.tennis-point.com/yonex-poly-tour-pro?ref=AFFILIATE_TAG,true,,,
+# ── Luxilon 4G ────────────────────────────────────────────────────────────────
+string,luxilon-4g,amazon,US,,true,,,
+string,luxilon-4g,tennisWarehouse,US,https://www.tenniswarehouse.com/p/LUXILON_4G.html?src=AFFILIATE_TAG,true,,,
+string,luxilon-4g,tennisPoint,EU,https://www.tennis-point.com/luxilon-4g?ref=AFFILIATE_TAG,true,,,
+# ── Luxilon 4G Rough ─────────────────────────────────────────────────────────
+string,luxilon-4g-rough,amazon,US,,true,,,
+string,luxilon-4g-rough,tennisWarehouse,US,https://www.tenniswarehouse.com/p/LUXILON_4G_ROUGH.html?src=AFFILIATE_TAG,true,,,
+# ── Solinco Confidential ──────────────────────────────────────────────────────
+string,solinco-confidential,amazon,US,,true,,,
+string,solinco-confidential,tennisWarehouse,US,https://www.tenniswarehouse.com/p/SOLINCO_CONFIDENTIAL.html?src=AFFILIATE_TAG,true,,,
+# ── Wilson Pro Staff 97 v14 ───────────────────────────────────────────────────
+racquet,wilson-pro-staff-97-v14,amazon,US,,true,,,
+racquet,wilson-pro-staff-97-v14,tennisWarehouse,US,https://www.tenniswarehouse.com/p/WILSON_PRO_STAFF_97.html?src=AFFILIATE_TAG,true,,,
+racquet,wilson-pro-staff-97-v14,amazon,UK,,true,,,
+racquet,wilson-pro-staff-97-v14,tennisPoint,EU,https://www.tennis-point.com/wilson-pro-staff-97?ref=AFFILIATE_TAG,true,,,
+# ── Babolat Pure Aero 2023 ────────────────────────────────────────────────────
+racquet,babolat-pure-aero-2023,amazon,US,,true,,,
+racquet,babolat-pure-aero-2023,tennisWarehouse,US,https://www.tenniswarehouse.com/p/BABOLAT_PURE_AERO_2023.html?src=AFFILIATE_TAG,true,,,
+racquet,babolat-pure-aero-2023,amazon,UK,,true,,,
+racquet,babolat-pure-aero-2023,tennisPoint,EU,https://www.tennis-point.com/babolat-pure-aero-2023?ref=AFFILIATE_TAG,false,,,
+# ── Head Speed MP 2024 ────────────────────────────────────────────────────────
+racquet,head-speed-mp-2024,amazon,US,,true,,,
+racquet,head-speed-mp-2024,tennisWarehouse,US,https://www.tenniswarehouse.com/p/HEAD_SPEED_MP_2024.html?src=AFFILIATE_TAG,true,,,
+racquet,head-speed-mp-2024,tennisPoint,EU,https://www.tennis-point.com/head-speed-mp-2024?ref=AFFILIATE_TAG,true,,,
+# ── Wilson Blade 98 ───────────────────────────────────────────────────────────
+racquet,wilson-blade-98-16x19-v9,amazon,US,,true,,,
+racquet,wilson-blade-98-16x19-v9,tennisWarehouse,US,https://www.tenniswarehouse.com/p/WILSON_BLADE_98.html?src=AFFILIATE_TAG,true,,,
+racquet,wilson-blade-98-16x19-v9,amazon,UK,,true,,,
+# ── Yonex EZONE 98 2024 ───────────────────────────────────────────────────────
+racquet,yonex-ezone-98-2024,amazon,US,,true,,,
+racquet,yonex-ezone-98-2024,tennisWarehouse,US,https://www.tenniswarehouse.com/p/YONEX_EZONE_98_2024.html?src=AFFILIATE_TAG,true,,,
+racquet,yonex-ezone-98-2024,tennisPoint,EU,https://www.tennis-point.com/yonex-ezone-98-2024?ref=AFFILIATE_TAG,true,,,

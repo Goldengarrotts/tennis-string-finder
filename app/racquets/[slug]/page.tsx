@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { racquets, getRacquetBySlug } from '@/data/racquets';
 import { strings, getStringsBySlugs } from '@/data/strings';
 import StringCard from '@/components/StringCard';
+import WhereToBuy from '@/components/WhereToBuy';
+import { detectRegion } from '@/lib/detectRegion';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -34,6 +36,8 @@ export default async function RacquetDetailPage({ params }: Props) {
   const { slug } = await params;
   const r = getRacquetBySlug(slug);
   if (!r) notFound();
+
+  const defaultRegion = await detectRegion();
 
   const recommendedStrings = r.recommendedStrings
     ? getStringsBySlugs(r.recommendedStrings)
@@ -149,11 +153,36 @@ export default async function RacquetDetailPage({ params }: Props) {
             🎾 Find strings for this racquet
           </Link>
 
+          {/* Where to buy */}
+          <WhereToBuy itemType="racquet" itemSlug={r.slug} itemName={`${r.brand} ${r.name}`} defaultRegion={defaultRegion} />
+
+          {/* Popular strings cross-sell */}
+          {recommendedStrings.length > 0 && (
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h3 className="font-bold text-gray-900 mb-3 text-sm">Popular strings for this racquet</h3>
+              <div className="space-y-2">
+                {recommendedStrings.slice(0, 3).map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/strings/${s.slug}`}
+                    className="flex items-center justify-between p-2.5 rounded-lg bg-gray-50 hover:bg-court/5 border border-transparent hover:border-court/20 transition-colors"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-xs text-gray-400">{s.brand}</p>
+                      <p className="text-sm font-medium text-gray-900 truncate">{s.name}</p>
+                    </div>
+                    <span className="text-xs text-court font-semibold ml-2 shrink-0">View →</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Browse strings */}
           <div className="bg-gray-50 rounded-xl p-4 text-center">
             <p className="text-sm text-gray-600 mb-3">Want to explore all strings?</p>
             <Link href="/strings" className="text-court font-semibold text-sm hover:underline">
-              Browse all 20 strings →
+              Browse all strings →
             </Link>
           </div>
         </aside>
