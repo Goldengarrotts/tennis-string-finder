@@ -4,7 +4,9 @@
       "Bash(npm run:*)",
       "Bash(grep:*)",
       "Bash(npm install:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(ls:*)",
+      "Bash(test:*)"
     ]
   }
 }
