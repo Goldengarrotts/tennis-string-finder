@@ -97,11 +97,17 @@ export default function WhereToBuy({
   const itemLinks = retailLinks.filter(
     (l) => l.itemType === itemType && l.itemSlug === itemSlug,
   );
-  if (itemLinks.length === 0) return null;
 
-  let regionLinks = itemLinks.filter((l) => l.region === region);
-  if (regionLinks.length === 0) regionLinks = itemLinks.filter((l) => l.region === 'GLOBAL');
-  if (regionLinks.length === 0) regionLinks = itemLinks;
+  let regionLinks: RetailLink[];
+  if (itemLinks.length === 0) {
+    // No CSV rows for this item — synthesise an Amazon search link for the current region
+    // so every product page always has at least one CTA.
+    regionLinks = [{ itemType, itemSlug, retailer: 'amazon', region, url: '', isPrimary: true, price: null, currency: null, lastCheckedISO: null }];
+  } else {
+    regionLinks = itemLinks.filter((l) => l.region === region);
+    if (regionLinks.length === 0) regionLinks = itemLinks.filter((l) => l.region === 'GLOBAL');
+    if (regionLinks.length === 0) regionLinks = itemLinks;
+  }
 
   const sorted = sortLinks(regionLinks);
   const [best, ...rest] = sorted;

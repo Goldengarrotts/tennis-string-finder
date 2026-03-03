@@ -145,6 +145,9 @@ export default async function RacquetDetailPage({ params }: Props) {
             </dl>
           </div>
 
+          {/* Where to buy */}
+          <WhereToBuy itemType="racquet" itemSlug={r.slug} itemName={`${r.brand} ${r.name}`} defaultRegion={defaultRegion} />
+
           {/* CTA */}
           <Link
             href={`/finder?racquet=${r.slug}`}
@@ -152,9 +155,6 @@ export default async function RacquetDetailPage({ params }: Props) {
           >
             🎾 Find strings for this racquet
           </Link>
-
-          {/* Where to buy */}
-          <WhereToBuy itemType="racquet" itemSlug={r.slug} itemName={`${r.brand} ${r.name}`} defaultRegion={defaultRegion} />
 
           {/* Popular strings cross-sell */}
           {recommendedStrings.length > 0 && (
