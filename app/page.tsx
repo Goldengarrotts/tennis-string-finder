@@ -1,65 +1,155 @@
-import Image from "next/image";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { strings } from '@/data/strings';
+import StringCard from '@/components/StringCard';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'StringLab — Tennis String Finder & Comparison',
+  description:
+    'Not sure what tennis string to use? Answer 4 quick questions about your racquet and playing goals, and get personalised string recommendations with clear explanations.',
+};
+
+const FEATURES = [
+  {
+    icon: '🎯',
+    title: 'Racquet-first recommendations',
+    desc: 'Tell us your racquet and we factor in string pattern, head size, and tension range.',
+  },
+  {
+    icon: '⚖️',
+    title: 'Side-by-side comparison',
+    desc: 'Compare up to 3 strings on spin, power, control, comfort, and durability.',
+  },
+  {
+    icon: '💬',
+    title: 'Plain-English explanations',
+    desc: 'No jargon. We tell you why each string suits you, in terms anyone can understand.',
+  },
+  {
+    icon: '💪',
+    title: 'Arm-safety filter',
+    desc: 'Struggling with tennis elbow? We flag and deprioritise strings that are hard on your arm.',
+  },
+];
+
+const POPULAR_SLUGS = ['luxilon-alu-power', 'babolat-rpm-blast', 'wilson-nxt', 'tecnifibre-x-one-biphase'];
+
+export default function HomePage() {
+  const popular = POPULAR_SLUGS.map((slug) => strings.find((s) => s.slug === slug)).filter(Boolean);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* ── Hero ── */}
+      <section className="bg-court text-white">
+        <div className="max-w-6xl mx-auto px-4 py-20 text-center">
+          <p className="text-ball font-semibold text-sm uppercase tracking-widest mb-4">
+            The tennis string guide
           </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+            Find the string{' '}
+            <br className="hidden sm:block" />
+            <span className="text-ball">your game deserves.</span>
+          </h1>
+          <p className="text-green-200 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
+            Answer 4 quick questions about your racquet and playing goals. Get personalised string
+            recommendations with clear, jargon-free explanations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/finder"
+              className="bg-ball text-court font-bold px-8 py-4 rounded-xl text-lg hover:brightness-110 transition-all shadow-lg"
+            >
+              Find my string →
+            </Link>
+            <Link
+              href="/strings"
+              className="bg-white/10 text-white border border-white/20 font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/20 transition-colors"
+            >
+              Browse all strings
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ── How it works ── */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-10">How it works</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { step: '1', icon: '🎾', label: 'Pick your racquet' },
+              { step: '2', icon: '🎯', label: 'Choose your goals' },
+              { step: '3', icon: '⚙️', label: 'Set your preferences' },
+              { step: '4', icon: '🏆', label: 'Get your top 3 picks' },
+            ].map(({ step, icon, label }) => (
+              <div key={step} className="text-center">
+                <div className="w-12 h-12 bg-court/10 rounded-full flex items-center justify-center text-court font-bold text-lg mx-auto mb-3">
+                  {step}
+                </div>
+                <p className="text-3xl mb-2">{icon}</p>
+                <p className="font-semibold text-gray-800">{label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/finder" className="btn-primary inline-block">
+              Start the finder
+            </Link>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ── Features ── */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">Why StringLab?</h2>
+        <p className="text-gray-500 mb-10">We cut through the noise so you don&apos;t have to.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {FEATURES.map(({ icon, title, desc }) => (
+            <div key={title} className="bg-white rounded-xl border border-gray-200 p-6">
+              <p className="text-3xl mb-3">{icon}</p>
+              <h3 className="font-semibold text-gray-900 mb-1">{title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Popular strings ── */}
+      <section className="bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 py-16">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">Popular strings</h2>
+              <p className="text-gray-500 mt-1">The most-played strings on tour and at clubs worldwide.</p>
+            </div>
+            <Link href="/strings" className="text-court font-semibold text-sm hover:underline hidden sm:block">
+              Browse all 20 →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {popular.map((s) => s && <StringCard key={s.slug} string={s} compareLink />)}
+          </div>
+          <div className="text-center mt-6 sm:hidden">
+            <Link href="/strings" className="btn-ghost">Browse all strings →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA strip ── */}
+      <section className="bg-court-dark text-white">
+        <div className="max-w-6xl mx-auto px-4 py-12 text-center">
+          <h2 className="text-2xl font-bold mb-3">Not sure which racquet you have?</h2>
+          <p className="text-green-200 mb-6">
+            Browse our racquet guide to find your frame and see which strings we recommend.
+          </p>
+          <Link
+            href="/racquets"
+            className="bg-ball text-court font-bold px-6 py-3 rounded-xl hover:brightness-110 transition-all inline-block"
+          >
+            Browse racquets →
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
