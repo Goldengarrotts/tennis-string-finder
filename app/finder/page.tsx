@@ -5,7 +5,7 @@ import { detectRegion } from '@/lib/detectRegion';
 export const metadata: Metadata = {
   title: 'String Finder — Find Your Perfect Tennis String',
   description:
-    'Answer 4 quick questions about your racquet, playing goals, and arm health. Get 3 personalised string recommendations with plain-English reasons.',
+    'Answer 5 quick questions about your racquet, playing goals, play frequency, and preferences. Get up to 8 personalised string recommendations with clear, jargon-free explanations.',
 };
 
 export default async function FinderPage() {
@@ -17,7 +17,7 @@ export default async function FinderPage() {
         <p className="text-court font-semibold text-sm uppercase tracking-widest mb-2">Guided wizard</p>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Find your perfect string</h1>
         <p className="text-gray-500">
-          Takes about 60 seconds. No account needed. We&apos;ll explain exactly why we recommend each string.
+          Takes about 90 seconds. No account needed. We&apos;ll explain exactly why we recommend each string.
         </p>
       </div>
       <FinderWizard defaultRegion={defaultRegion} />

@@ -6,7 +6,10 @@
       "Bash(npm install:*)",
       "Bash(sed:*)",
       "Bash(ls:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node:*)",
+      "Bash(npx tsx:*)"
     ]
   }
 }

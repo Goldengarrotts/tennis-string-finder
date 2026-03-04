@@ -6,6 +6,18 @@ export type Level = 'beginner' | 'intermediate' | 'advanced' | 'pro';
 export type Balance = 'HH' | 'HL' | 'Even';
 export type Goal = 'comfort' | 'spin' | 'control' | 'power' | 'durability';
 
+/** How often the player plays — used to weight durability in recommendations. */
+export type PlayFrequency = 'occasional' | 'weekly' | '2to3' | 'competitive';
+
+/** Human-readable label assigned to each recommendation result slot. */
+export type ResultLabel =
+  | 'Best overall match'
+  | 'Great alternative'
+  | 'Budget option'
+  | 'Arm-friendly pick'
+  | 'Durability pick'
+  | 'Strong match';
+
 export interface Ratings {
   spin: number;
   power: number;
@@ -55,11 +67,17 @@ export interface FinderParams {
   secondaryGoal: Goal;
   armSensitive: boolean;
   hybrid: boolean;
+  /** Added step 4: adjusts durability weighting. */
+  playFrequency: PlayFrequency;
+  /** Added step 5: filters out natural-gut type entirely when true. */
+  excludeNaturalGut: boolean;
 }
 
 export interface Recommendation {
   string: TennisString;
   score: number;
+  /** Role label assigned to this result slot. */
+  label: ResultLabel;
   reasons: string[];
   suggestedTensionMin: number;
   suggestedTensionMax: number;

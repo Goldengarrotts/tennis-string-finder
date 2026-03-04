@@ -1,13 +1,45 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { strings } from '@/data/strings';
 import StringCard from '@/components/StringCard';
+import SectionHeader from '@/components/SectionHeader';
+import FeatureCard from '@/components/FeatureCard';
 
 export const metadata: Metadata = {
   title: 'StringLab — Tennis String Finder & Comparison',
   description:
-    'Not sure what tennis string to use? Answer 4 quick questions about your racquet and playing goals, and get personalised string recommendations with clear explanations.',
+    'Not sure what tennis string to use? Answer 4 quick questions about your racquet and playing goals, and get personalised string recommendations with clear, jargon-free explanations.',
 };
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const HOW_IT_WORKS = [
+  {
+    step: '1',
+    icon: '🎾',
+    title: 'Pick your racquet',
+    desc: 'Select your frame and we factor in string pattern, head size, and tension range.',
+  },
+  {
+    step: '2',
+    icon: '🎯',
+    title: 'Choose your goals',
+    desc: 'Tell us whether you prioritise spin, power, control, comfort, or durability.',
+  },
+  {
+    step: '3',
+    icon: '⚙️',
+    title: 'Set your preferences',
+    desc: 'Let us know about arm sensitivity and whether you want hybrid setups.',
+  },
+  {
+    step: '4',
+    icon: '🏆',
+    title: 'Get your top 3 strings',
+    desc: 'Receive personalised recommendations with plain-English explanations.',
+  },
+];
 
 const FEATURES = [
   {
@@ -32,119 +64,201 @@ const FEATURES = [
   },
 ];
 
-const POPULAR_SLUGS = ['luxilon-alu-power', 'babolat-rpm-blast', 'wilson-nxt', 'tecnifibre-x-one-biphase'];
+// RPM Blast, ALU Power, Hyper-G, Tour Bite — the iconic four
+const POPULAR_SLUGS = [
+  'babolat-rpm-blast',
+  'luxilon-alu-power',
+  'solinco-hyper-g',
+  'solinco-tour-bite',
+];
+
+// ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   const popular = POPULAR_SLUGS.map((slug) => strings.find((s) => s.slug === slug)).filter(Boolean);
 
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-court text-white">
-        <div className="max-w-6xl mx-auto px-4 py-20 text-center">
-          <p className="text-ball font-semibold text-sm uppercase tracking-widest mb-4">
-            The tennis string guide
-          </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-            Find the string{' '}
-            <br className="hidden sm:block" />
-            <span className="text-ball">your game deserves.</span>
-          </h1>
-          <p className="text-green-200 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-            Answer 4 quick questions about your racquet and playing goals. Get personalised string
-            recommendations with clear, jargon-free explanations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/finder"
-              className="bg-ball text-court font-bold px-8 py-4 rounded-xl text-lg hover:brightness-110 transition-all shadow-lg"
-            >
-              Find my string →
-            </Link>
-            <Link
-              href="/strings"
-              className="bg-white/10 text-white border border-white/20 font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/20 transition-colors"
-            >
-              Browse all strings
-            </Link>
+      {/* ══ HERO ══════════════════════════════════════════════════════════════
+          Two-column layout on desktop: copy left, racquet illustration right.
+          Primary CTA (ball yellow) dominates; secondary is a ghost button.
+      ════════════════════════════════════════════════════════════════════════ */}
+      <section className="bg-court text-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 py-16 md:py-28 grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+
+          {/* Left: copy */}
+          <div>
+            {/* Eyebrow label */}
+            <span className="inline-flex items-center gap-2 bg-white/10 text-ball text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+              <span aria-hidden="true">🎾</span> The tennis string guide
+            </span>
+
+            {/* Headline — strong typographic hierarchy */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] mb-5 text-white">
+              <span className="text-ball">Find the string{' '}</span>
+              your game deserves.
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-green-200 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg">
+              Answer 4 quick questions about your racquet and playing goals. Get personalised
+              recommendations with clear, jargon-free explanations.
+            </p>
+
+            {/* CTAs: primary dominant, secondary ghost */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/finder"
+                className="inline-flex items-center justify-center gap-2 bg-ball text-court font-bold px-8 py-4 rounded-xl text-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-black/20"
+              >
+                Find my string
+                {/* Arrow icon */}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/strings"
+                className="inline-flex items-center justify-center border border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 active:scale-[0.98] transition-all"
+              >
+                Browse all strings
+              </Link>
+            </div>
+
+            {/* Light trust signal */}
+            <p className="text-green-300/60 text-sm mt-6">40+ strings reviewed &middot; Free to use</p>
           </div>
+
+          {/* Right: hero photograph
+              - Stacks below text on mobile, sits beside it on md+
+              - Court-green overlay blends the photo with site branding
+              - Next.js Image handles WebP conversion, lazy loading, and sizing */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+            <Image
+              src="/images/herotennis.png"
+              alt="Tennis ball striking racquet strings on a court"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            {/* Dark court-green overlay at 40% opacity to tie the photo into the hero palette */}
+            <div className="absolute inset-0 bg-[#1e5c3a]/40" />
+          </div>
+
         </div>
       </section>
 
-      {/* ── How it works ── */}
+      {/* ══ HOW IT WORKS ══════════════════════════════════════════════════════
+          4 equal cards, each with: step badge, icon, title, description.
+          Cards have soft shadow + rounded corners for a clean, modern look.
+      ════════════════════════════════════════════════════════════════════════ */}
       <section className="bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-10">How it works</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { step: '1', icon: '🎾', label: 'Pick your racquet' },
-              { step: '2', icon: '🎯', label: 'Choose your goals' },
-              { step: '3', icon: '⚙️', label: 'Set your preferences' },
-              { step: '4', icon: '🏆', label: 'Get your top 3 picks' },
-            ].map(({ step, icon, label }) => (
-              <div key={step} className="text-center">
-                <div className="w-12 h-12 bg-court/10 rounded-full flex items-center justify-center text-court font-bold text-lg mx-auto mb-3">
-                  {step}
+        <div className="max-w-6xl mx-auto px-4 py-16">
+
+          <SectionHeader
+            label="The process"
+            title="How it works"
+            subtitle="Four quick steps to your perfect string."
+            centered
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-10">
+            {HOW_IT_WORKS.map(({ step, icon, title, desc }) => (
+              <div
+                key={step}
+                className="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col gap-3"
+              >
+                {/* Icon + step badge row */}
+                <div className="flex items-center justify-between">
+                  <span className="text-3xl" aria-hidden="true">{icon}</span>
+                  <span className="text-xs font-bold text-court bg-court/10 px-2.5 py-1 rounded-full">
+                    Step {step}
+                  </span>
                 </div>
-                <p className="text-3xl mb-2">{icon}</p>
-                <p className="font-semibold text-gray-800">{label}</p>
+                <h3 className="font-semibold text-gray-900 text-base">{title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link href="/finder" className="btn-primary inline-block">
+
+          {/* Secondary CTA below the cards */}
+          <div className="text-center mt-10">
+            <Link
+              href="/finder"
+              className="inline-flex items-center gap-2 bg-court text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-court-dark transition-colors shadow-sm"
+            >
               Start the finder
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Features ── */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Why StringLab?</h2>
-        <p className="text-gray-500 mb-10">We cut through the noise so you don&apos;t have to.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {FEATURES.map(({ icon, title, desc }) => (
-            <div key={title} className="bg-white rounded-xl border border-gray-200 p-6">
-              <p className="text-3xl mb-3">{icon}</p>
-              <h3 className="font-semibold text-gray-900 mb-1">{title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Popular strings ── */}
-      <section className="bg-white border-t border-gray-100">
+      {/* ══ POPULAR STRINGS ═══════════════════════════════════════════════════
+          Cream background breaks up the white sections.
+          showRatings + compact keeps cards tidy but informative.
+      ════════════════════════════════════════════════════════════════════════ */}
+      <section className="bg-cream border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 py-16">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">Popular strings</h2>
-              <p className="text-gray-500 mt-1">The most-played strings on tour and at clubs worldwide.</p>
-            </div>
-            <Link href="/strings" className="text-court font-semibold text-sm hover:underline hidden sm:block">
-              Browse all 20 →
+
+          {/* Header row with inline "browse all" link on desktop */}
+          <div className="flex items-end justify-between mb-10">
+            <SectionHeader
+              title="Popular strings"
+              subtitle="The most-played strings on tour and at clubs worldwide."
+            />
+            <Link
+              href="/strings"
+              className="text-court font-semibold text-sm hover:underline hidden sm:block shrink-0 mb-0.5"
+            >
+              Browse all strings →
             </Link>
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {popular.map((s) => s && <StringCard key={s.slug} string={s} compareLink />)}
+            {popular.map((s) => s && (
+              <StringCard key={s.slug} string={s} showRatings compact compareLink />
+            ))}
           </div>
+
+          {/* Mobile fallback link */}
           <div className="text-center mt-6 sm:hidden">
             <Link href="/strings" className="btn-ghost">Browse all strings →</Link>
           </div>
         </div>
       </section>
 
-      {/* ── CTA strip ── */}
+      {/* ══ WHY STRINGLAB ═════════════════════════════════════════════════════
+          2×2 feature grid using the reusable FeatureCard component.
+      ════════════════════════════════════════════════════════════════════════ */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 py-16">
+          <SectionHeader
+            title="Why StringLab?"
+            subtitle="We cut through the noise so you don't have to."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
+            {FEATURES.map(({ icon, title, desc }) => (
+              <FeatureCard key={title} icon={icon} title={title} desc={desc} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ RACQUET CTA STRIP ═════════════════════════════════════════════════
+          Anchor section for users who don't know their racquet yet.
+      ════════════════════════════════════════════════════════════════════════ */}
       <section className="bg-court-dark text-white">
-        <div className="max-w-6xl mx-auto px-4 py-12 text-center">
+        <div className="max-w-6xl mx-auto px-4 py-14 text-center">
           <h2 className="text-2xl font-bold mb-3">Not sure which racquet you have?</h2>
-          <p className="text-green-200 mb-6">
+          <p className="text-green-200 mb-7 max-w-md mx-auto">
             Browse our racquet guide to find your frame and see which strings we recommend.
           </p>
           <Link
             href="/racquets"
-            className="bg-ball text-court font-bold px-6 py-3 rounded-xl hover:brightness-110 transition-all inline-block"
+            className="inline-flex items-center gap-2 bg-ball text-court font-bold px-7 py-3.5 rounded-xl hover:brightness-110 transition-all shadow-lg"
           >
             Browse racquets →
           </Link>
