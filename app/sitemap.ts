@@ -9,7 +9,7 @@ import { racquets } from '@/data/racquets';
  * so the URLs point to your real domain:
  *   NEXT_PUBLIC_SITE_URL=https://www.yourdomain.com
  */
-const BASE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com').replace(/\/$/, '');
+const BASE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tennisstringfinder.com').replace(/\/$/, '');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
