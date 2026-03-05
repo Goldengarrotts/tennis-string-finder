@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "data:build": "tsx scripts/build-data.ts",
-    "retailers:sync-racquetdepot": "tsx scripts/sync-racquetdepot-links.ts"
+    "retailers:sync-racquetdepot": "tsx scripts/sync-racquetdepot-links.ts",
+    "racquetdepot:import-strings": "tsx scripts/import-racquetdepot-string-links.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.6",

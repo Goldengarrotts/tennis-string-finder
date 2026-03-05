@@ -111,13 +111,21 @@ export default function WhereToBuy({
     if (regionLinks.length === 0) regionLinks = itemLinks;
   }
 
-  // Always include Amazon for the current region — it just searches amazon with an
-  // affiliate tag so it should be available everywhere regardless of what's in the CSV.
+  // Always include Amazon for the current region.
   const hasAmazon = regionLinks.some((l) => l.retailer === 'amazon');
   if (!hasAmazon) {
     regionLinks = [
       ...regionLinks,
       { itemType, itemSlug, retailer: 'amazon', region, url: '', isPrimary: true, price: null, currency: null, lastCheckedISO: null },
+    ];
+  }
+
+  // For UK string pages with no specific Racquet Depot link, fall back to the generic shop.
+  const hasRacquetDepot = regionLinks.some((l) => l.retailer === 'racquetdepot');
+  if (!hasRacquetDepot && itemType === 'string' && region === 'UK') {
+    regionLinks = [
+      ...regionLinks,
+      { itemType, itemSlug, retailer: 'racquetdepot', region: 'UK', url: 'https://a.racquetdepot.co.uk/479.html', isPrimary: false, price: null, currency: null, lastCheckedISO: null },
     ];
   }
 

@@ -33,6 +33,8 @@ export function buildAffiliateLink(retailer: string, productUrl: string): string
 
   switch (retailer) {
     case 'racquetdepot':
+      // URLs that already start with the affiliate domain are FINAL — return unchanged.
+      if (productUrl.startsWith('https://a.racquetdepot.co.uk/')) return productUrl;
       return `${RACQUET_DEPOT_BASE}?url=${encodeURIComponent(productUrl)}`;
 
     // Amazon is handled by buildAmazonSearchUrl in lib/amazon.ts
