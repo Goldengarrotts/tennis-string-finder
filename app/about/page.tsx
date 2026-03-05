@@ -2,25 +2,25 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About StringLab',
-  description: 'StringLab helps tennis players of all levels find the right string for their game with plain-English advice and unbiased comparisons.',
+  title: 'About TennisStringFinder',
+  description: 'TennisStringFinder helps tennis players of all levels find the right string for their game with plain-English advice and unbiased comparisons.',
 };
 
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-14">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">About StringLab</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">About TennisStringFinder</h1>
       <p className="text-gray-500 text-lg mb-10">Plain-English string advice for every tennis player.</p>
 
       <div className="prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
         <p>
-          StringLab was built out of frustration. Every time we tried to find advice about tennis strings online,
+          TennisStringFinder was built out of frustration. Every time we tried to find advice about tennis strings online,
           we hit a wall of jargon, conflicting forum posts, and YouTube videos 45 minutes long. All we wanted to know
           was: <em>which string should I put in my racquet?</em>
         </p>
 
         <p>
-          StringLab answers that question simply. Tell us your racquet and what you care about — spin, comfort, control,
+          TennisStringFinder answers that question simply. Tell us your racquet and what you care about — spin, comfort, control,
           power, or durability — and we&apos;ll give you three recommendations with clear, jargon-free reasons for each one.
         </p>
 

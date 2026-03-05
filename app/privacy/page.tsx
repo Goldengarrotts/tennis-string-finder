@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | StringLab',
-  description: 'StringLab privacy policy — what data we collect and how we use it.',
+  title: 'Privacy Policy | TennisStringFinder',
+  description: 'TennisStringFinder privacy policy — what data we collect and how we use it.',
 };
 
 export default function PrivacyPage() {
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">What we collect</h2>
           <p>
-            StringLab does not require account creation for its core features. We do not collect
+            TennisStringFinder does not require account creation for its core features. We do not collect
             personal data beyond standard server logs (IP addresses, browser type, pages visited)
             that are typical of any web service. These logs are used solely for debugging and
             performance monitoring.
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">Third-party links</h2>
           <p>
-            StringLab contains links to third-party websites (retailers, manufacturers). We are not
+            TennisStringFinder contains links to third-party websites (retailers, manufacturers). We are not
             responsible for the privacy practices of those sites. Please review their privacy policies
             separately.
           </p>

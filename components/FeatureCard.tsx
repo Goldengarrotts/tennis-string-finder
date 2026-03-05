@@ -5,7 +5,7 @@ interface Props {
 }
 
 /**
- * Feature highlight card used in the "Why StringLab?" section.
+ * Feature highlight card used in the "Why TennisStringFinder?" section.
  * Renders an icon, bold title, and short description.
  */
 export default function FeatureCard({ icon, title, desc }: Props) {

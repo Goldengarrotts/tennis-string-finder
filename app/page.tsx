@@ -7,7 +7,7 @@ import SectionHeader from '@/components/SectionHeader';
 import FeatureCard from '@/components/FeatureCard';
 
 export const metadata: Metadata = {
-  title: 'StringLab — Tennis String Finder & Comparison',
+  title: 'TennisStringFinder — Tennis String Finder & Comparison',
   description:
     'Not sure what tennis string to use? Answer 4 quick questions about your racquet and playing goals, and get personalised string recommendations with clear, jargon-free explanations.',
 };
@@ -236,7 +236,7 @@ export default function HomePage() {
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 py-16">
           <SectionHeader
-            title="Why StringLab?"
+            title="Why TennisStringFinder?"
             subtitle="We cut through the noise so you don't have to."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">

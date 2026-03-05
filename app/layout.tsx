@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://tennisstringfinder.com"),
 
   title: {
-    default: "StringLab — Tennis String Finder & Comparison",
-    template: "%s | StringLab",
+    default: "TennisStringFinder — Tennis String Finder & Comparison",
+    template: "%s | TennisStringFinder",
   },
   description:
     "Find the perfect tennis string for your racquet and playing style. Plain-English advice, head-to-head comparisons, and guided recommendations for every level.",
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "StringLab",
-    title: "StringLab — Tennis String Finder & Comparison",
+    siteName: "TennisStringFinder",
+    title: "TennisStringFinder — Tennis String Finder & Comparison",
     description: "Find the perfect tennis string for your game. Compare, filter, and get personalised picks.",
     url: "https://tennisstringfinder.com",
   },

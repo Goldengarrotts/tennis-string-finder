@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -19,11 +20,8 @@ export default function Nav() {
     <header className="bg-court border-b border-court-dark sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-2xl">🎾</span>
-          <span className="font-bold text-xl text-white tracking-tight group-hover:text-ball transition-colors">
-            StringLab
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.png" alt="TennisStringFinder.com" width={220} height={48} priority />
         </Link>
 
         {/* Desktop nav */}

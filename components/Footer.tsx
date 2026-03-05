@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,9 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl">🎾</span>
-              <span className="font-bold text-white text-lg">StringLab</span>
+            <div className="mb-3">
+              <Image src="/logo.png" alt="TennisStringFinder.com" width={180} height={40} />
             </div>
             <p className="text-sm text-green-200 leading-relaxed">
               Find the right tennis string for your game. Plain-English advice for every level.
@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-court-light mt-8 pt-6 text-xs text-green-300 flex flex-col sm:flex-row justify-between gap-2">
-          <p>© {new Date().getFullYear()} StringLab. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} FindTennisStrings. All rights reserved.</p>
           <p>
             Links may earn us a small commission at no cost to you.{' '}
             <Link href="/disclosure" className="underline hover:text-ball">Learn more.</Link>

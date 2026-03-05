@@ -361,7 +361,7 @@ ${items.join(',\n')}
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 function main() {
-  console.log(c.bold('\n🎾  StringLab data build\n'));
+  console.log(c.bold('\n🎾  TennisStringFinder data build\n'));
 
   // 1. Strings
   process.stdout.write('  Strings   ');

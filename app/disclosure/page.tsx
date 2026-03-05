@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Disclosure | StringLab',
-  description: 'StringLab affiliate disclosure — how we earn commissions and our commitment to unbiased advice.',
+  title: 'Affiliate Disclosure | TennisStringFinder',
+  description: 'TennisStringFinder affiliate disclosure — how we earn commissions and our commitment to unbiased advice.',
 };
 
 export default function DisclosurePage() {
@@ -13,7 +13,7 @@ export default function DisclosurePage() {
 
       <div className="space-y-6 text-gray-700 leading-relaxed">
         <p>
-          StringLab participates in affiliate marketing programmes. This means some links on this website
+          TennisStringFinder participates in affiliate marketing programmes. This means some links on this website
           may be affiliate links — if you click one and make a purchase, we may earn a small commission
           at no additional cost to you.
         </p>
