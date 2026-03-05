@@ -282,7 +282,7 @@ export function getRacquetBySlug(slug: string): Racquet | undefined {
 }
 
 // ─── RETAIL LINKS ─────────────────────────────────────────────────────────────
-const RETAILERS  = new Set(['amazon', 'tennisWarehouse', 'tennisPoint', 'other']);
+const RETAILERS  = new Set(['amazon', 'racquetdepot', 'tennisWarehouse', 'tennisPoint', 'other']);
 const REGIONS    = new Set(['US', 'UK', 'EU', 'GLOBAL']);
 const ITEM_TYPES = new Set(['string', 'racquet']);
 const CURRENCIES = new Set(['USD', 'GBP', 'EUR']);
@@ -336,7 +336,7 @@ function buildRetailLinks(
   });
 
   return `${GENERATED_BANNER('retail_links.csv')}
-export type Retailer = 'amazon' | 'tennisWarehouse' | 'tennisPoint' | 'other';
+export type Retailer = 'amazon' | 'racquetdepot' | 'tennisWarehouse' | 'tennisPoint' | 'other';
 export type Region   = 'US' | 'UK' | 'EU' | 'GLOBAL';
 export type ItemType = 'string' | 'racquet';
 export type Currency = 'USD' | 'GBP' | 'EUR';

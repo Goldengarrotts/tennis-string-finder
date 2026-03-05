@@ -5,6 +5,7 @@ import { strings } from '@/data/strings';
 import StringCard from '@/components/StringCard';
 import SectionHeader from '@/components/SectionHeader';
 import FeatureCard from '@/components/FeatureCard';
+import RacquetDepotSidebarPromo from '@/components/RacquetDepotSidebarPromo';
 
 export const metadata: Metadata = {
   title: 'TennisStringFinder — Tennis String Finder & Comparison',
@@ -227,6 +228,13 @@ export default function HomePage() {
           <div className="text-center mt-6 sm:hidden">
             <Link href="/strings" className="btn-ghost">Browse all strings →</Link>
           </div>
+        </div>
+      </section>
+
+      {/* ══ PARTNER OFFER ════════════════════════════════════════════════════ */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <RacquetDepotSidebarPromo placement="homepage_inline" />
         </div>
       </section>
 

@@ -9,7 +9,9 @@
       "Bash(test:*)",
       "Bash(npx tsc:*)",
       "Bash(node:*)",
-      "Bash(npx tsx:*)"
+      "Bash(npx tsx:*)",
+      "Bash(comm:*)",
+      "Bash(curl:*)"
     ]
   }
 }

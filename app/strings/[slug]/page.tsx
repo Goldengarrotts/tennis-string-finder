@@ -5,7 +5,11 @@ import { strings, getStringBySlug } from '@/data/strings';
 import { racquets } from '@/data/racquets';
 import RatingBar from '@/components/RatingBar';
 import WhereToBuy from '@/components/WhereToBuy';
+import PriceComparison from '@/components/PriceComparison';
+import RacquetDepotSidebarPromo from '@/components/RacquetDepotSidebarPromo';
 import { detectRegion } from '@/lib/detectRegion';
+import { hasPCData } from '@/lib/price-comparison';
+import type { PCRegion } from '@/types/price-comparison';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -43,7 +47,9 @@ export default async function StringDetailPage({ params }: Props) {
   const s = getStringBySlug(slug);
   if (!s) notFound();
 
-  const defaultRegion = await detectRegion();
+  const rawRegion = await detectRegion();
+  const defaultRegion = rawRegion as PCRegion;
+  const usePriceComparison = hasPCData(slug);
 
   const pairings = getPairings(s.type);
   const similar = strings
@@ -91,8 +97,22 @@ export default async function StringDetailPage({ params }: Props) {
             </div>
           </div>
 
-          {/* Where to buy */}
-          <WhereToBuy itemType="string" itemSlug={s.slug} itemName={`${s.brand} ${s.name}`} defaultRegion={defaultRegion} />
+          {/* Where to buy / Price comparison */}
+          {usePriceComparison ? (
+            <PriceComparison
+              stringSlug={s.slug}
+              stringName={`${s.brand} ${s.name}`}
+              defaultRegion={defaultRegion}
+            />
+          ) : (
+            <WhereToBuy itemType="string" itemSlug={s.slug} itemName={`${s.brand} ${s.name}`} defaultRegion={rawRegion} />
+          )}
+
+          {/* Mobile-only promo — shown here (after WhereToBuy) on small screens.
+              On desktop the same promo lives in the sidebar (hidden lg:block there). */}
+          <div className="lg:hidden">
+            <RacquetDepotSidebarPromo placement="mobile_inline" />
+          </div>
 
           {/* Why this pick */}
           <div className="bg-court/5 border border-court/20 rounded-xl p-6">
@@ -213,6 +233,11 @@ export default async function StringDetailPage({ params }: Props) {
               </div>
             </div>
           )}
+
+          {/* Racquet Depot promo — desktop sidebar only (mobile version is in main content above) */}
+          <div className="hidden lg:block">
+            <RacquetDepotSidebarPromo placement="sidebar" />
+          </div>
 
           {/* Affiliate notice */}
           <p className="text-xs text-gray-400 leading-relaxed">

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { retailLinks } from '@/data/retailLinks';
 import type { ItemType, Region, RetailLink } from '@/data/retailLinks';
 import { buildAmazonSearchUrl } from '@/lib/amazon';
+import { buildAffiliateLink } from '@/lib/affiliateLinks';
 
 const REGIONS: { key: Region; label: string }[] = [
   { key: 'US', label: 'US' },
@@ -14,6 +15,7 @@ const REGIONS: { key: Region; label: string }[] = [
 
 const RETAILER_LABELS: Record<string, string> = {
   amazon: 'Amazon',
+  racquetdepot: 'Racquet Depot',
   tennisWarehouse: 'Tennis Warehouse',
   tennisPoint: 'Tennis Point',
   other: 'Retailer',
@@ -53,13 +55,15 @@ function formatDate(isoDate: string): string {
   }
 }
 
-/** Resolve the href for a link. Amazon rows with an empty url get an auto-generated search URL. */
+/** Resolve the href for a link, applying affiliate tracking where configured. */
 function resolveUrl(link: RetailLink, itemName: string): string {
+  // Amazon: auto-generate a search URL when no direct URL is stored
   if (link.retailer === 'amazon' && !link.url) {
     const region = link.region === 'UK' ? 'UK' : link.region === 'EU' ? 'EU' : 'US';
     return buildAmazonSearchUrl({ query: itemName, region });
   }
-  return link.url;
+  // All other retailers: wrap with affiliate tracking if configured
+  return buildAffiliateLink(link.retailer, link.url);
 }
 
 function sortLinks(links: RetailLink[]): RetailLink[] {
@@ -100,13 +104,21 @@ export default function WhereToBuy({
 
   let regionLinks: RetailLink[];
   if (itemLinks.length === 0) {
-    // No CSV rows for this item — synthesise an Amazon search link for the current region
-    // so every product page always has at least one CTA.
-    regionLinks = [{ itemType, itemSlug, retailer: 'amazon', region, url: '', isPrimary: true, price: null, currency: null, lastCheckedISO: null }];
+    regionLinks = [];
   } else {
     regionLinks = itemLinks.filter((l) => l.region === region);
     if (regionLinks.length === 0) regionLinks = itemLinks.filter((l) => l.region === 'GLOBAL');
     if (regionLinks.length === 0) regionLinks = itemLinks;
+  }
+
+  // Always include Amazon for the current region — it just searches amazon with an
+  // affiliate tag so it should be available everywhere regardless of what's in the CSV.
+  const hasAmazon = regionLinks.some((l) => l.retailer === 'amazon');
+  if (!hasAmazon) {
+    regionLinks = [
+      ...regionLinks,
+      { itemType, itemSlug, retailer: 'amazon', region, url: '', isPrimary: true, price: null, currency: null, lastCheckedISO: null },
+    ];
   }
 
   const sorted = sortLinks(regionLinks);

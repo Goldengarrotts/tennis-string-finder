@@ -1,0 +1,38 @@
+[
+  {
+    "id": "amazon-uk",
+    "name": "Amazon UK",
+    "region": "UK",
+    "currency": "GBP",
+    "logoUrl": null,
+    "provider": "manual",
+    "provider_config": null
+  },
+  {
+    "id": "amazon-us",
+    "name": "Amazon US",
+    "region": "US",
+    "currency": "USD",
+    "logoUrl": null,
+    "provider": "manual",
+    "provider_config": null
+  },
+  {
+    "id": "racquetdepot-uk",
+    "name": "Racquet Depot",
+    "region": "UK",
+    "currency": "GBP",
+    "logoUrl": null,
+    "provider": "manual",
+    "provider_config": null
+  },
+  {
+    "id": "tennis-warehouse-us",
+    "name": "Tennis Warehouse",
+    "region": "US",
+    "currency": "USD",
+    "logoUrl": null,
+    "provider": "manual",
+    "provider_config": null
+  }
+]

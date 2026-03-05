@@ -5,6 +5,7 @@ import { racquets, getRacquetBySlug } from '@/data/racquets';
 import { strings, getStringsBySlugs } from '@/data/strings';
 import StringCard from '@/components/StringCard';
 import WhereToBuy from '@/components/WhereToBuy';
+import RacquetDepotSidebarPromo from '@/components/RacquetDepotSidebarPromo';
 import { detectRegion } from '@/lib/detectRegion';
 
 interface Props {
@@ -66,6 +67,11 @@ export default async function RacquetDetailPage({ params }: Props) {
             </span>
             <p className="text-gray-600 leading-relaxed text-lg">{r.description}</p>
             <p className="text-sm text-gray-500 mt-3 italic">{LEVEL_DESC[r.level]}</p>
+          </div>
+
+          {/* Mobile-only promo — desktop version lives in sidebar */}
+          <div className="lg:hidden">
+            <RacquetDepotSidebarPromo placement="mobile_inline" />
           </div>
 
           {/* Tension guidance */}
@@ -177,6 +183,11 @@ export default async function RacquetDetailPage({ params }: Props) {
               </div>
             </div>
           )}
+
+          {/* Racquet Depot promo — desktop sidebar only */}
+          <div className="hidden lg:block">
+            <RacquetDepotSidebarPromo placement="sidebar" />
+          </div>
 
           {/* Browse strings */}
           <div className="bg-gray-50 rounded-xl p-4 text-center">

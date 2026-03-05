@@ -1,0 +1,42 @@
+[
+  {
+    "id": "solinco-hyper-g-125-set",
+    "stringSlug": "solinco-hyper-g",
+    "label": "12m Set — 1.25mm (17g)",
+    "gauge": "1.25mm",
+    "packType": "set",
+    "reelMetres": null
+  },
+  {
+    "id": "solinco-hyper-g-120-set",
+    "stringSlug": "solinco-hyper-g",
+    "label": "12m Set — 1.20mm (18g)",
+    "gauge": "1.20mm",
+    "packType": "set",
+    "reelMetres": null
+  },
+  {
+    "id": "babolat-rpm-blast-125-set",
+    "stringSlug": "babolat-rpm-blast",
+    "label": "12m Set — 1.25mm (17g)",
+    "gauge": "1.25mm",
+    "packType": "set",
+    "reelMetres": null
+  },
+  {
+    "id": "luxilon-alu-power-125-set",
+    "stringSlug": "luxilon-alu-power",
+    "label": "12m Set — 1.25mm (17g)",
+    "gauge": "1.25mm",
+    "packType": "set",
+    "reelMetres": null
+  },
+  {
+    "id": "solinco-tour-bite-125-set",
+    "stringSlug": "solinco-tour-bite",
+    "label": "12m Set — 1.25mm (17g)",
+    "gauge": "1.25mm",
+    "packType": "set",
+    "reelMetres": null
+  }
+]
